@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios'
-import TopSpot from './topspot';
+import VP from './visitorprofile';
 
 class App extends Component {
   
@@ -8,34 +8,37 @@ class App extends Component {
     super(props);
 
     this.state = {
-        topspots: []
+        visitorProfile: [],
+        count: 0
     };
 }
 
 componentWillMount(){
   axios
-    .get('https://origin-top-spots-api.herokuapp.com/api/topspots')
+    .get('https://e2nkh9bvqg.execute-api.us-east-2.amazonaws.com/prod/visitorSampler?count=1')
     .then(response => response.data)
-    .then(topspots => this.setState({ topspots }));
+    .then(visitorProfile => this.setState( {visitorProfile} ));
 }
-  
+
+
   render() {
     return (
       <div className='App'>
         
         <div className="container">
           <div className="jumbotron">
-          <h1 className="display-4">San Diego Top Spots</h1>
-          <p className="lead">A list of the top 30 places to see in San Diego, California.</p>
+          <h1 className="display-4">Your user information</h1>
+          <p className="lead">A list of the your info</p>
           </div>
             <div className='jumbotron'>
-            { 
-              this.state.topspots.map(topspot => (
-            <TopSpot
-            key={topspot.id}
-            name={topspot.name}
-            description={topspot.description}
-            location={topspot.location} /> ))
+            {this.state.visitorProfile.map(visitorProfile => (
+            <VP
+            audiences={visitorProfile.audiences[0]}
+            badges={visitorProfile.badges[0]}
+            dates={visitorProfile.dates['First Visit']}
+            metrics={visitorProfile.metrics}
+            
+            />))
             }
             </div>
         </div>
