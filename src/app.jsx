@@ -8,8 +8,8 @@ class App extends Component {
     super(props);
 
     this.state = {
-        visitorProfile: [],
-        count: 0
+      visitorProfile: [],
+      count: 0
     };
 }
 
@@ -28,7 +28,7 @@ componentWillMount(){
         <div className="container">
           <div className="jumbotron">
           <h1 className="display-4">Your user information</h1>
-          <p className="lead">A list of the your info</p>
+          <p className="lead">All the information we have collected about you</p>
           </div>
             <div className='jumbotron'>
             {this.state.visitorProfile.map(visitorProfile => (
@@ -37,6 +37,7 @@ componentWillMount(){
             badges={visitorProfile.badges[0]}
             dates={visitorProfile.dates['First Visit']}
             metrics={visitorProfile.metrics}
+            properties={visitorProfile.properties}
             
             />))
             }
