@@ -26,9 +26,9 @@ componentWillMount(){
       <div className='App'>
         
         <div className="container">
-          <div className="jumbotron">
-          <h1 className="display-4">Your user information</h1>
-          <p className="lead">All the information we have collected about you</p>
+          <div className="jumbotron text-center">
+            <h1 className="display-4">Your user information</h1>
+            <p className="lead">All the information we have collected about you</p>
           </div>
             <div className='jumbotron'>
             {this.state.visitorProfile.map(visitorProfile => (
